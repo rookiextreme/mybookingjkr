@@ -5,6 +5,12 @@ class Flatpickrinit{
                 dateFormat: 'd-m-Y'
             });
         });
+    }
 
+    static initWithTime(selector){
+        $(selector).flatpickr({
+            dateFormat: 'd-m-Y H:i',
+            enableTime: true
+        });
     }
 }
