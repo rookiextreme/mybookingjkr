@@ -55,7 +55,7 @@ class AuthenticatedSessionController extends Controller
             return redirect()->intended('/dashboard');
         }else{
 //            if(Laratrust::hasRole('Pengguna')){
-            return redirect()->intended('/dashboard/pengguna');
+            return redirect()->intended('/dashboard');
 //            }
         }
     }

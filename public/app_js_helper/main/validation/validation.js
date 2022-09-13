@@ -119,6 +119,14 @@ class ValidateInput{
                     label: 'Must Only Be In Double Format Or Integer',
                 };
                 break;
+            case 'datetime':
+                reObject = {
+                    regex: /^\d{2}-\d{2}-\d{4} (2[0-3]|[01][0-9]):[0-5][0-9]/,
+                    label: 'Must Only Be In Date And Time Format',
+                };
+                break;
+
+
         }
         return reObject;
     }
