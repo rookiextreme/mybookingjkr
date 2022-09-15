@@ -92,8 +92,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="tempahan-bilik-add">Add</button>
-                <button type="button" class="btn btn-warning" id="tempahan-bilik-edit">Edit</button>
+                <button type="button" class="btn btn-success" id="tempahan-bilik-add">Tempah</button>
+                <button type="button" class="btn btn-warning" id="tempahan-bilik-edit">Kemaskini</button>
             </div>
         </div>
     </div>

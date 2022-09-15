@@ -29,8 +29,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="bangunan-add">Add</button>
-                <button type="button" class="btn btn-warning" id="bangunan-edit">Edit</button>
+                <button type="button" class="btn btn-success" id="bangunan-add">Tambah</button>
+                <button type="button" class="btn btn-warning" id="bangunan-edit">Kemaskini</button>
             </div>
         </div>
     </div>

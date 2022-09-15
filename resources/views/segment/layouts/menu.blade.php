@@ -1,9 +1,11 @@
 <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-    <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Admin</span><i data-feather="more-horizontal"></i>
-    </li>
-    <li class=" nav-item"><a class="d-flex align-items-center" href="app-kanban.html"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Paparan Muka</span></a>
+    <li class=" nav-item"><a class="d-flex align-items-center" href="{{ Request::root() }}/dashboard"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Paparan Muka</span></a>
     </li>
     @role('Admin')
+    <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Admin</span><i data-feather="more-horizontal"></i>
+    </li>
+    <li class=" nav-item"><a class="d-flex align-items-center" href="{{ Request::root() }}/admin/tempahan/bilik"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Pengurusan Tempahan</span></a>
+    </li>
     <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="calendar"></i><span class="menu-title text-truncate" data-i18n="Invoice">Tetapan Bilik</span></a>
         <ul class="menu-content">
             <li><a class="d-flex align-items-center" href="{{ Request::root() }}/admin/bilik"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Bilik</span></a>
@@ -28,16 +30,16 @@
         <ul class="menu-content">
             <li><a class="d-flex align-items-center" href="{{ Request::root() }}/pengguna/tempahan/bilik"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Bilik</span></a>
             </li>
-            <li><a class="d-flex align-items-center" href="app-invoice-preview.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">Laporan</span></a>
-            </li>
+{{--            <li><a class="d-flex align-items-center" href="app-invoice-preview.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">Laporan</span></a>--}}
+{{--            </li>--}}
         </ul>
     </li>
-    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="Invoice">Profil</span></a>
-        <ul class="menu-content">
-            <li><a class="d-flex align-items-center" href="app-invoice-list.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Profile Pengguna</span></a>
-            </li>
-            <li><a class="d-flex align-items-center" href="app-invoice-preview.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">Carian Maklumat</span></a>
-            </li>
-        </ul>
-    </li>
+{{--    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="Invoice">Profil</span></a>--}}
+{{--        <ul class="menu-content">--}}
+{{--            <li><a class="d-flex align-items-center" href="app-invoice-list.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">Profile Pengguna</span></a>--}}
+{{--            </li>--}}
+{{--            <li><a class="d-flex align-items-center" href="app-invoice-preview.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Preview">Carian Maklumat</span></a>--}}
+{{--            </li>--}}
+{{--        </ul>--}}
+{{--    </li>--}}
 </ul>

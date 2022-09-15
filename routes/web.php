@@ -8,6 +8,7 @@ use App\Http\Controllers\Segment\Admin\Tetapan\Bangunan\TetapanBangunanControlle
 use App\Http\Controllers\Segment\Admin\Bilik\BilikController;
 use App\Http\Controllers\Common\CommonController;
 use App\Http\Controllers\Segment\Pengguna\Tempahan\TempahanBilikController;
+use App\Http\Controllers\Segment\Admin\Tempahan\Bilik\AdminTempahanBilikController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +25,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::post('/get-events', [DashboardController::class, 'getEvents'])->name('getEvents');
 
 Route::prefix('/admin')->group(function () {
     Route::prefix('/tetapan')->group(function () {
@@ -63,6 +65,15 @@ Route::prefix('/admin')->group(function () {
         Route::post('/activate', [BilikController::class, 'activateBilik']);
         Route::post('/delete', [BilikController::class, 'deleteBilik']);
     });
+
+    Route::prefix('/tempahan')->group(function () {
+        Route::prefix('/bilik')->group(function () {
+            Route::get('/', [AdminTempahanBilikController::class, 'index']);
+            Route::get('/get-list', [AdminTempahanBilikController::class, 'getTempahanBilikList']);
+            Route::post('/get-tempahan', [AdminTempahanBilikController::class, 'getTempahanBilik']);
+            Route::post('/lulus', [AdminTempahanBilikController::class, 'lulusTempahanBilik']);
+        });
+    });
 });
 
 Route::prefix('/pengguna')->group(function () {
@@ -75,7 +86,6 @@ Route::prefix('/pengguna')->group(function () {
             Route::post('/delete', [TempahanBilikController::class, 'deleteTempahanBilik']);
             Route::post('/tengok-kosong', [TempahanBilikController::class, 'tengokKosongTempahanBilik']);
         });
-
     });
 });
 

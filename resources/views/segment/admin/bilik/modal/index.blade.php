@@ -52,8 +52,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="bilik-add">Add</button>
-                <button type="button" class="btn btn-warning" id="bilik-edit">Edit</button>
+                <button type="button" class="btn btn-success" id="bilik-add">Tambah</button>
+                <button type="button" class="btn btn-warning" id="bilik-edit">Kemaskini</button>
             </div>
         </div>
     </div>

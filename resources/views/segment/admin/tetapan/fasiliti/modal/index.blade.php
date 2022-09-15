@@ -17,8 +17,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="fasiliti-add">Add</button>
-                <button type="button" class="btn btn-warning" id="fasiliti-edit">Edit</button>
+                <button type="button" class="btn btn-success" id="fasiliti-add">Tambah</button>
+                <button type="button" class="btn btn-warning" id="fasiliti-edit">Kemaskini</button>
             </div>
         </div>
     </div>

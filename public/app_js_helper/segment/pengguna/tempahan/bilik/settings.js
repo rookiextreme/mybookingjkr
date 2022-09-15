@@ -27,13 +27,20 @@ DatatableUI.init({
             title: 'Tindakan',
             orderable: false,
             render: function (data, type, full, meta) {
-                let activate = full.flag;
-                let activateStat = activate == 0 ? 'btn-outline-danger' : 'btn-outline-success' + '';
-                return (
-                    '<div class="btn-group" role="group" aria-label="Basic example">' +
+                let status = full.status;
+
+                if(status === 0){
+                    return (
+                        '<div class="btn-group" role="group" aria-label="Basic example">' +
                         '<button type="button" class="btn btn-outline-danger tempahan-bilik-delete" data-bs-toggle="tooltip" data-bs-placement="top" title="Padam">' + feather.icons['trash-2'].toSvg() +'</button>' +
-                    '</div>'
-                );
+                        '</div>'
+                    );
+                }else{
+                    return (
+                        '-'
+                    );
+                }
+
             }
         }
     ],
