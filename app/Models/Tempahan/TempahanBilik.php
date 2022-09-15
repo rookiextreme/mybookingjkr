@@ -59,7 +59,7 @@ class TempahanBilik extends Model
             $model->nama = $v->tempahan_bilik_name;
             $model->masa_mula = date('Y-m-d H:i', strtotime($v->tempahan_masa_mula));
             $model->masa_tamat = date('Y-m-d H:i', strtotime($v->tempahan_masa_tamat));
-            $model->nokp_urusetia = 010202022;
+            $model->nokp_urusetia = $v->tempahan_bilik_urusetia;
             $model->tel_urusetia = $v->tempahan_bilik_notel_urusetia;
             $model->pengerusi = $v->tempahan_bilik_pengerusi;
             $model->bil_agensi_d = $v->tempahan_bilik_agensi;

@@ -70,7 +70,7 @@ class TempahanBilikController extends Controller{
     }
 
     public function deleteTempahanBilik(Request $request){
-        CommonController::softDeleteRecord(BangunanBilik::class, $request->input('id'));
+        CommonController::softDeleteRecord(TempahanBilik::class, $request->input('id'));
         return response()->json([
             'success' => 1,
         ]);

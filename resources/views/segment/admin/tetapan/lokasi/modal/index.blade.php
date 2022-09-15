@@ -17,8 +17,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="lokasi-add">Add</button>
-                <button type="button" class="btn btn-warning" id="lokasi-edit">Edit</button>
+                <button type="button" class="btn btn-success" id="lokasi-add">Tambah</button>
+                <button type="button" class="btn btn-warning" id="lokasi-edit">Kemaskini</button>
             </div>
         </div>
     </div>
