@@ -9,6 +9,7 @@ use App\Http\Controllers\Segment\Admin\Bilik\BilikController;
 use App\Http\Controllers\Common\CommonController;
 use App\Http\Controllers\Segment\Pengguna\Tempahan\TempahanBilikController;
 use App\Http\Controllers\Segment\Admin\Tempahan\Bilik\AdminTempahanBilikController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,9 +21,7 @@ use App\Http\Controllers\Segment\Admin\Tempahan\Bilik\AdminTempahanBilikControll
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [AuthenticatedSessionController::class, 'create']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 Route::post('/get-events', [DashboardController::class, 'getEvents'])->name('getEvents');
