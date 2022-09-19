@@ -5,6 +5,7 @@ use App\Http\Controllers\Common\CommonController;
 use App\Http\Controllers\Controller;
 use App\Models\Mykj\ListPegawai2;
 use App\Models\Tempahan\TempahanBilik;
+use App\Models\Tetapan\BangunanBilik;
 use App\Models\Tetapan\Fasiliti;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -38,7 +39,7 @@ class AdminTempahanBilikController extends Controller{
             ->addColumn('tempoh', function($data){
                 return 'Dari: '.date('d-m-Y H:i', strtotime($data->masa_mula)).' <br> Hingga: '.date('d-m-Y H:i', strtotime($data->masa_tamat));
             })
-            ->addColumn('status', function($data){
+            ->addColumn('status_tempahan', function($data){
                 $label = '';
                 if($data->status == 0){
                     $label = '<span style="color:blue">Belum Lulus</span>';
@@ -52,8 +53,25 @@ class AdminTempahanBilikController extends Controller{
             })
             ->addColumn('action', function($data){
             })
-            ->rawColumns(['action', 'nama', 'maklumat', 'tempoh', 'status'])
+            ->rawColumns(['action', 'nama', 'maklumat', 'tempoh', 'status_tempahan'])
             ->make(true);
+    }
+
+    public function getFasilitiBilik(BangunanBilik $bilik){
+        $data = [];
+
+        $getFasiliti = $bilik->bilikFasiliti;
+
+        if(count($getFasiliti) > 0){
+            foreach($getFasiliti as $gF){
+                $data[] = [
+                    'nama' => $gF->BFFasiliti->nama,
+                    'kuantiti' => $gF->kuantiti
+                ];
+            }
+        }
+        return $data;
+
     }
 
     public function getTempahanBilik(Request $request){
@@ -65,7 +83,8 @@ class AdminTempahanBilikController extends Controller{
             'tempahan' => date('d-m-Y H:i', strtotime($model->created_at)),
             'masa_mula' => date('d-m-Y H:i', strtotime($model->masa_mula)),
             'masa_tamat' => date('d-m-Y H:i', strtotime($model->masa_tamat)),
-            'bilik' => $model->tempahanBilik->nama
+            'bilik' => $model->tempahanBilik->nama,
+            'fasiliti' => self::getFasilitiBilik($model->tempahanBilik)
         ];
 
         $getUrusetia = ListPegawai2::getMaklumatPegawai($model->nokp_urusetia);

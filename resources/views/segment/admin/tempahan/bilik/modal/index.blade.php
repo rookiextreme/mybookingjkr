@@ -9,22 +9,27 @@
                 <div class="row">
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
-                            <label class="form-label" for="basicInput">Ditempah Pada: <span id="tempah-pada"></span></label>
+                            <label class="form-label" for="basicInput"><b>Ditempah Pada:</b> <span id="tempah-pada"></span></label>
                         </div>
                     </div>
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
-                            <label class="form-label" for="basicInput">Masa Mula: <span id="tempah-masa-mula"></span></label>
+                            <label class="form-label" for="basicInput"><b>Masa Mula:</b> <span id="tempah-masa-mula"></span></label>
                         </div>
                     </div>
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
-                            <label class="form-label" for="basicInput">Masa Tamat: <span id="tempah-masa-tamat"></span></label>
+                            <label class="form-label" for="basicInput"><b>Masa Tamat:</b> <span id="tempah-masa-tamat"></span></label>
                         </div>
                     </div>
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
-                            <label class="form-label" for="basicInput">Bilik: <span id="tempah-nama-bilik"></span></label>
+                            <label class="form-label" for="basicInput"><b>Bilik:</b> <span id="tempah-nama-bilik"></span></label>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-md-6 col-12">
+                        <div class="mb-1 form-group">
+                            <label class="form-label" for="basicInput"><b>Fasiliti/Kemudahan:</b><br> <span id="tempah-bilik-fasiliti"></span></label>
                         </div>
                     </div>
                 </div>
@@ -33,27 +38,27 @@
                 <div class="row">
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
-                            <label class="form-label" for="basicInput">Mesyuarat: <span id="tempah-tujuan"></span></label>
+                            <label class="form-label" for="basicInput"><b>Mesyuarat:</b> <span id="tempah-tujuan"></span></label>
                         </div>
                     </div>
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
-                            <label class="form-label" for="basicInput">Urusetia: <span id="tempah-urusetia"></span></label>
+                            <label class="form-label" for="basicInput"><b>Urusetia:</b> <span id="tempah-urusetia"></span></label>
                         </div>
                     </div>
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
-                            <label class="form-label" for="basicInput">Pengerusi: <span id="tempah-pengerusi"></span></label>
+                            <label class="form-label" for="basicInput"><b>Pengerusi:</b> <span id="tempah-pengerusi"></span></label>
                         </div>
                     </div>
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
-                            <label class="form-label" for="basicInput">Agensi Dalam: <span id="tempah-agensi-d"></span></label>
+                            <label class="form-label" for="basicInput"><b>Agensi Dalam:</b> <span id="tempah-agensi-d"></span></label>
                         </div>
                     </div>
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
-                            <label class="form-label" for="basicInput">Agensi L: <span id="tempah-agensi-l"></span></label>
+                            <label class="form-label" for="basicInput"><b>Agensi Luar:</b> <span id="tempah-agensi-l"></span></label>
                         </div>
                     </div>
                 </div>

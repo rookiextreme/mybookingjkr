@@ -76,3 +76,50 @@ $(document).on('change', '#bilik-lokasi', function(){
         }
     });
 });
+
+$(document).on('change', '#bilik-kemudahan', function(){
+   let curThis = $(this);
+   let val = curThis.val();
+   let label = curThis.text();
+   if(val != '' && typeof val != undefined){
+       let append = getKemudahanAppend(label, val);
+
+       $('#bilik-kemudahan-list').append(append);
+   }
+});
+
+$(document).on('click', '.padam-item', function(){
+    let parent_id = $(this).closest('.parent-item').attr('data-id');
+
+    if(parent_id != '' && typeof parent_id != 'undefined'){
+        let data = Common.emptyRequest();
+
+        data.append('id', parent_id);
+        Ajax.runAjax({
+            url: 'admin/bilik/delete-item',
+            data: data,
+            func: function(){}
+        });
+    }
+
+    $(this).closest('.parent-item').remove();
+});
+
+function getKemudahanAppend(label, fasiliti_id, kuantiti= '', mainId = ''){
+    return '<div class="col-xl-6 col-md-6 col-12 parent-item" data-id="'+ mainId +'">' +
+                '<div class="mb-1 form-group">' +
+                    '<label class="form-label" for="basicInput">'+ label +'</label>' +
+                    '<div class="row">' +
+                        '<div class="col-md-9 bilik-kemudahan-main" data-item-parent="'+ fasiliti_id +'">' +
+                            '<input type="text" class="form-control bilik-kemudahan-item" value="'+ kuantiti +'" placeholder="Kuantiti"/>' +
+                            '<div class="invalid-feedback"></div>' +
+                        '</div>' +
+                    '<div class="col-md-3">' +
+                        '<button type="button" class="btn btn-icon btn-danger padam-item" data-bs-toggle="tooltip" data-bs-placement="top" title="Padam Kemudahan">' +
+                        feather.icons['trash-2'].toSvg() +
+                        '</button>' +
+                    '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+}

@@ -15,6 +15,16 @@ $(document).on('click', '#add-bilik-modal', function(){
             }
         ]
     });
+
+    Common.postEmptyFields([
+        ['#bilik-name', 'text'],
+        ['#bilik-lokasi', 'dropdown'],
+        ['#bilik-bangunan', 'dropdown'],
+        ['#bilik-aras', 'text'],
+        ['#bilik-kapasiti', 'text'],
+        // ['#bilik-name', 'dropdown'],
+    ]);
+    $('#bilik-kemudahan-list').empty();
 });
 
 $(document).on('click', '.bilik-edit', function(){
@@ -47,6 +57,14 @@ $(document).on('click', '.bilik-edit', function(){
                     $('#bilik-aras').val(data.data.aras);
                     $('#bilik-kapasiti').val(data.data.kapasiti);
                     $('#bilik-bangunan').val(data.data.bangunan_id).prop('selected', true).trigger('change');
+
+                    let fasiliti = data.data.fasiliti;
+                    $('#bilik-kemudahan-list').empty();
+                    if(fasiliti.length > 0){
+                        fasiliti.forEach(function(v){
+                            $('#bilik-kemudahan-list').append(getKemudahanAppend(v.fasiliti_name, v.fasilitisId, v.kuantiti, v.id));
+                        });
+                    }
                 }
             });
         }
@@ -57,6 +75,8 @@ $(document).on('click', '#bilik-add, #bilik-edit', function(){
    let validate = new Validation();
    let curThis = $(this);
    let trigger = '';
+   let kemudahan_list = [];
+   let pass = 0;
 
     let v = validate.checkEmpty(
         validate.getValue('#bilik-name', 'mix', 'Nama', 'bilik_name'),
@@ -65,6 +85,27 @@ $(document).on('click', '#bilik-add, #bilik-edit', function(){
         validate.getValue('#bilik-aras', 'int', 'Aras', 'bilik_aras'),
         validate.getValue('#bilik-kapasiti', 'int', 'Kapasiti', 'bilik_kapasiti')
     );
+
+
+    if($('.bilik-kemudahan-item').length > 0){
+        $('.bilik-kemudahan-item').each(function (v){
+            let reg = /^\d+$/;
+            if(!reg.test($(this).val())){
+                pass = 1;
+                Validation.addInvalidUI($(this), 'Mesti Di Dalam Bentuk Int', false);
+            }else{
+                let parentId = $(this).closest('.bilik-kemudahan-main').attr('data-item-parent');
+                kemudahan_list.push([parentId, $(this).val()]);
+                Validation.removeInvalidUI($(this));
+            }
+        });
+    }
+
+    v.append('kemudahan_list', JSON.stringify(kemudahan_list));
+    console.log(kemudahan_list);
+    if(pass == 1){
+        return false;
+    }
 
     if(curThis.is('#bilik-add')){
         v.append('trigger', 0);

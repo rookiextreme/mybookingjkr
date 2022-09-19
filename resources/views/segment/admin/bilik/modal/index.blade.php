@@ -49,6 +49,20 @@
                             <div class="invalid-feedback"></div>
                         </div>
                     </div>
+                    <div class="col-xl-12 col-md-6 col-12">
+                        <div class="mb-1 form-group">
+                            <label class="form-label" for="basicInput">Fasiliti/Kemudahan</label>
+                            <select class="select2 form-select form-control" id="bilik-kemudahan">
+                                <option value="">Sila Pilih</option>
+                                @foreach($kemudahanList as $k)
+                                    <option value="{{ $k->id }}">{{ $k->nama }}</option>
+                                @endforeach
+                            </select>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-md-12 col-12 row" id="bilik-kemudahan-list">
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">

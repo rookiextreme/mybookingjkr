@@ -4,7 +4,7 @@ DatatableUI.init({
         { data: 'nama' },
         { data: 'maklumat' },
         { data: 'tempoh' },
-        { data: 'status' },
+        { data: 'status_tempahan' },
         { data: 'action' },
     ],
     url: '/admin/tempahan/bilik/get-list',

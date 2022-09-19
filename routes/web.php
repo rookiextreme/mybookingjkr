@@ -63,6 +63,7 @@ Route::prefix('/admin')->group(function () {
         Route::post('/get-bilik', [BilikController::class, 'getBilik']);
         Route::post('/activate', [BilikController::class, 'activateBilik']);
         Route::post('/delete', [BilikController::class, 'deleteBilik']);
+        Route::post('/delete-item', [BilikController::class, 'deleteItemBilik']);
     });
 
     Route::prefix('/tempahan')->group(function () {

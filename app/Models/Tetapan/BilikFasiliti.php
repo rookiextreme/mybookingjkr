@@ -14,6 +14,6 @@ class BilikFasiliti extends Model
     }
 
     public function BFFasiliti(){
-        return $this->hasOne(Fasiliti::class, 'fasilitis_id', 'id');
+        return $this->hasOne(Fasiliti::class, 'id', 'fasilitis_id');
     }
 }
