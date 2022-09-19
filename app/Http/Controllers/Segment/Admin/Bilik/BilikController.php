@@ -5,6 +5,8 @@ use App\Http\Controllers\Common\CommonController;
 use App\Http\Controllers\Controller;
 use App\Models\Tetapan\Bangunan;
 use App\Models\Tetapan\BangunanBilik;
+use App\Models\Tetapan\BilikFasiliti;
+use App\Models\Tetapan\Fasiliti;
 use App\Models\Tetapan\Lokasi;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -17,8 +19,10 @@ class BilikController extends Controller{
 
     public function index(){
         $lokasiList = Lokasi::where('flag', 1)->where('delete_id', 0)->get();
+        $kemudahanList = Fasiliti::where('flag', 1)->where('delete_id', 0)->get();
         return view('segment.admin.bilik.index', [
-            'lokasiList' => $lokasiList
+            'lokasiList' => $lokasiList,
+            'kemudahanList' => $kemudahanList
         ]);
     }
 
@@ -50,12 +54,28 @@ class BilikController extends Controller{
         $id = $request->input('id');
         $model = BangunanBilik::find($id);
 
-        $data = [];
+        $data = [
+            'fasiliti' => []
+        ];
+
         $data['nama'] = $model->nama;
         $data['lokasi_id'] = $model->bilikBangunan->lokasis_id;
         $data['bangunan_id'] = $model->bangunans_id;
         $data['aras'] = $model->aras;
         $data['kapasiti'] = $model->kapasiti;
+
+        $fasiliti = $model->bilikFasiliti;
+
+        if($fasiliti){
+            foreach($fasiliti as $f){
+                $data['fasiliti'][] = [
+                    'id' => $f->id,
+                    'fasiliti_name' => $f->BFFasiliti->nama,
+                    'fasilitisId' => $f->fasilitis_id,
+                    'kuantiti' => $f->kuantiti
+                ];
+            }
+        }
 
         return response()->json([
             'success' => 1,
@@ -74,6 +94,17 @@ class BilikController extends Controller{
 
     public function deleteBilik(Request $request){
         CommonController::softDeleteRecord(BangunanBilik::class, $request->input('id'));
+        return response()->json([
+            'success' => 1,
+        ]);
+    }
+
+    public function deleteItemBilik(Request $request){
+        $id = $request->input('id');
+        $model = BilikFasiliti::find($id);
+        $model->delete_id = 1;
+        $model->save();
+
         return response()->json([
             'success' => 1,
         ]);

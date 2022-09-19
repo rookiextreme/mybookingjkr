@@ -16,6 +16,10 @@ class BangunanBilik extends Model
         return $this->hasOne(Bangunan::class, 'id', 'bangunans_id');
     }
 
+    public function bilikFasiliti(){
+        return $this->hasMany(BilikFasiliti::class, 'biliks_id', 'id')->where('flag', 1)->where('delete_id', 0);
+    }
+
     public static function storeUpdate(Request $request){
         try {
             $v = new ValidationController();
@@ -45,6 +49,11 @@ class BangunanBilik extends Model
             $model->kapasiti = $v->bilik_kapasiti;
 
             if($model->save()){
+                $kemudahan_list = json_decode($request->input('kemudahan_list'));
+                if(!empty($kemudahan_list)){
+                    BangunanBilik::addFasiliti($kemudahan_list, $model->id);
+                }
+
                 return response()->json([
                     'success' => 1
                 ]);
@@ -62,5 +71,22 @@ class BangunanBilik extends Model
         })->where('bangunans_id', $bangunan_id)->where('delete_id', 0)->first();
 
         return !($model == null);
+    }
+
+    public static function addFasiliti($kemudahan, $bilik_id){
+        foreach($kemudahan as $k){
+            $model = BilikFasiliti::where('biliks_id', $bilik_id)->where('fasilitis_id', $k[0])->first();
+
+            if(!$model){
+                $model = new BilikFasiliti;
+                $model->biliks_id = $bilik_id;
+                $model->flag = 1;
+                $model->delete_id = 0;
+            }
+
+            $model->kuantiti = $k[1];
+            $model->fasilitis_id = $k[0];
+            $model->save();
+        }
     }
 }

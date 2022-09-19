@@ -23,6 +23,16 @@ $(document).on('click', '.tempahan-edit', function(){
                     $('#tempah-pengerusi').html(data.data.maklumat.pengerusi);
                     $('#tempah-agensi-d').html(data.data.maklumat.bil_agensi_d);
                     $('#tempah-agensi-l').html(data.data.maklumat.bil_agensi_l);
+
+                    let fasiliti = data.data.tempahan.fasiliti;
+                    let curString = '';
+                    if(fasiliti.length > 0){
+                        fasiliti.forEach(function(v){
+                            curString += v.nama + ' - Kuantiti: ' + v.kuantiti + '<br>';
+                        });
+                    }
+
+                    $('#tempah-bilik-fasiliti').html(curString);
                 }
             });
         }

@@ -77,7 +77,7 @@
                     </div>
                     <div class="col-xl-6 col-md-6 col-12">
                         <div class="mb-1 form-group">
-                            <label class="form-label" for="basicInput">Bil. Pegawai</label>
+                            <label class="form-label" for="basicInput">Bil. Pegawai Luar</label>
                             <input type="text" class="form-control" id="tempahan-bilik-agensi-l" value=""/>
                             <div class="invalid-feedback"></div>
                         </div>
