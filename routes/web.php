@@ -24,6 +24,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 Route::get('/', [AuthenticatedSessionController::class, 'create']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::post('/dashboard/get-date-room', [DashboardController::class, 'getDateRoom']);
 Route::post('/get-events', [DashboardController::class, 'getEvents'])->name('getEvents');
 
 Route::prefix('/admin')->group(function () {
