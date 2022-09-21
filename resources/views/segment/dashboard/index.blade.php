@@ -5,10 +5,12 @@
 @endsection
 
 @section('customCSS')
-    <style>.fc-daygrid-event {
-            white-space: normal !important;
-            align-items: normal !important;
-        }</style>
+    <style>
+        .fc-bg-event
+        {
+            opacity: 0.2 !important;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -101,6 +103,7 @@
     </div>
     <!--/ Calendar Add/Update/Delete event modal-->
 </section>
+@include('segment.dashboard.modal.index')
 @endsection
 
 @section('JS')
@@ -109,42 +112,71 @@
 
 @section('customJS')
     @include('segment.layouts.custom_view_links.customjavascript.index')
-    <script src="{{ asset('templates/vuexy/app-assets/js/scripts/pages/app-calendar-events.js') }}"></script>
     <script>
-        var date = new Date();
-        var nextDay = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
-        // prettier-ignore
-        var nextMonth = date.getMonth() === 11 ? new Date(date.getFullYear() + 1, 0, 1) : new Date(date.getFullYear(), date.getMonth() + 1, 1);
-        // prettier-ignore
-        var prevMonth = date.getMonth() === 11 ? new Date(date.getFullYear() - 1, 0, 1) : new Date(date.getFullYear(), date.getMonth() - 1, 1);
-
         var calendarEl = document.getElementById('calendar');
+
         var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            eventSources: {
-                url: Common.getUrl() + '/get-events',
-                method: 'POST',
-                extraParams: {
-                    _token: Common.getToken(),
-                },
-                failure: function(e) {
-                    console.log(e);
-                    alert('there was an error while fetching events!');
-                },
-                color: 'yellow',   // a non-ajax option
-                textColor: 'black' // a non-ajax option
-            },
-            dragScroll: true,
-            dayMaxEvents: 2,
-            eventResizableFromStart: true,
             headerToolbar: {
-                start: 'sidebarToggle, prev,next, title',
-                end: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth'
             },
-            navLinks: true, // can click day/week names to navigate views
+            initialDate: new Date(),
+            events: fetchEvents(),
+            dateClick: function(info) {
+                let data = Common.emptyRequest();
+                data.append('date', info.dateStr)
+
+                Ajax.runAjax({
+                    url: 'dashboard/get-date-room',
+                    data: data,
+                    func: function(data){
+                        let parseData = data.data;
+                        let append = '';
+                        $('.tempahan-list').empty();
+                        $('.modal-title').empty().html('Tarikh: ' + parseData.tarikh);
+                        if(parseData.bilik.length > 0){
+                            parseData.bilik.forEach(function(v){
+                                append += '<div class="col-md-6">' +
+                                            '<div class="card mb-4">' +
+                                                '<div class="card-body">' +
+                                                    '<h4 class="card-title">'+ v.bilik +'</h4>' +
+                                                    '<div class="card-subtitle text-muted mb-1">Urussetia - '+ v.urusetia +' <br>Pengerusi - Meor</div>' +
+                                                '</div>' +
+                                            '</div>' +
+                                        '</div>';
+                            });
+                            $('.tempahan-list').append(append);
+                        }
+                        $('#bilik-modal').modal('show');
+                    }
+                });
+            },
         });
 
-        // Render calendar
         calendar.render();
+
+        function fetchEvents(){
+            let data = Common.emptyRequest();
+            $.ajax(
+                {
+                    url: Common.getUrl() + '/get-events',
+                    data: data,
+                    type: 'POST',
+                    dataType: "json",
+                    processData: false,
+                    contentType: false,
+                    context: this,
+                    async: false,
+                    success: function (result) {
+                        events = result;
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                }
+            );
+            return events;
+        }
     </script>
 @endsection
