@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('bangunan_biliks', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('users_id');
             $table->integer('bangunans_id');
             $table->integer('aras');
             $table->integer('kapasiti');
@@ -26,6 +27,7 @@ return new class extends Migration
 
         Schema::table('bangunan_biliks', function(Blueprint $table){
             $table->foreign('bangunans_id')->references('id')->on('bangunans');
+            $table->foreign('users_id')->references('id')->on('users');
         });
     }
 

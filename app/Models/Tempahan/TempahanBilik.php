@@ -4,6 +4,7 @@ namespace App\Models\Tempahan;
 
 use App\Http\Controllers\Common\CommonController;
 use App\Http\Controllers\Validation\ValidationController;
+use App\Jobs\SendEmailTempahan;
 use App\Models\Tetapan\BangunanBilik;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -67,6 +68,7 @@ class TempahanBilik extends Model
             $model->nota = $request->input('tempahan_bilik_nota');
             $model->status = 0;
 
+            dispatch(SendEmailTempahan::class($model->id));
             if($model->save()){
                 return response()->json([
                     'success' => 1

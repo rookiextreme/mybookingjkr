@@ -50,9 +50,11 @@ class TempahanBilikController extends Ajax{
                 if(avail === 0){
                     ToastAlert.toasting('Success', 'Ada Slot', 'success');
                     $('.tempahan-info').attr('style', 'display:compact');
+                    $('#tempahan-bilik-add').attr('style', '');
                 }else{
                     ToastAlert.toasting('Whoops!', 'Tiada Slot', 'error');
                     $('.tempahan-info').attr('style', 'display:none');
+                    $('#tempahan-bilik-add').attr('style', 'display:none');
                 }
 
             }

@@ -7,7 +7,7 @@ $(document).on('click', '#add-tempahan-bilik-modal', function(){
         buttonMode: [
             {
                 selector: '#tempahan-bilik-add',
-                show: true,
+                show: false,
             },
             {
                 selector: '#tempahan-bilik-edit',

@@ -10,6 +10,7 @@ use App\Http\Controllers\Common\CommonController;
 use App\Http\Controllers\Segment\Pengguna\Tempahan\TempahanBilikController;
 use App\Http\Controllers\Segment\Admin\Tempahan\Bilik\AdminTempahanBilikController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Segment\Admin\Pengguna\AdminPenggunaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -74,6 +75,13 @@ Route::prefix('/admin')->group(function () {
             Route::post('/get-tempahan', [AdminTempahanBilikController::class, 'getTempahanBilik']);
             Route::post('/lulus', [AdminTempahanBilikController::class, 'lulusTempahanBilik']);
         });
+    });
+
+    Route::prefix('/pengguna')->group(function () {
+        Route::get('/', [AdminPenggunaController::class, 'index']);
+        Route::get('/get-list', [AdminPenggunaController::class, 'getList']);
+        Route::post('/get-pengguna', [AdminPenggunaController::class, 'getPengguna']);
+        Route::post('/store-update', [AdminPenggunaController::class, 'storeUpdate']);
     });
 });
 
