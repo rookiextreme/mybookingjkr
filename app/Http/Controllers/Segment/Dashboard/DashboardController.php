@@ -31,18 +31,25 @@ class DashboardController extends Controller{
     public function getDateRoom(Request $request){
         $date = $request->input('date');
 
+        $today = date('Y-m-d');
+        $tomorrow = date('Y-m-d', strtotime($date . ' +1 day'));
+        $yesterday = date('Y-m-d', strtotime($date . ' -1 day'));
+
         $data = [];
         $data['tarikh'] = date("d-m-Y", strtotime($date));
-        $model = TempahanBilik::whereDate('masa_mula', $date)->orWhereDate('masa_tamat', $date)->get();
+
+        $model = TempahanBilik::whereBetween('masa_mula', [$yesterday, $tomorrow])->orWhereBetween('masa_tamat', [$yesterday, $tomorrow])->get();
 
         if($model){
             foreach($model as $m){
-                $data['bilik'][] = [
-                    'bilik' => $m->tempahanBilik->nama,
-                    'mesyuarat' => $m->nama,
-                    'urusetia' => ListPegawai2::getMaklumatPegawai($m->nokp_urusetia)['name'],
-                    'pengerusi' => $m->pengerusi
-                ];
+                if($m->status == 1){
+                    $data['bilik'][] = [
+                        'bilik' => $m->tempahanBilik->nama,
+                        'mesyuarat' => $m->nama,
+                        'urusetia' => ListPegawai2::getMaklumatPegawai($m->nokp_urusetia)['name'],
+                        'pengerusi' => $m->pengerusi
+                    ];
+                }
             }
         }
 

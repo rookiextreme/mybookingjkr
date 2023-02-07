@@ -27,17 +27,20 @@ class AdminTempahanBilikController extends Controller{
         $model = TempahanBilik::where('tempahan_biliks.delete_id', 0);
 
         if(Auth::user()->id != 1){
-            $model->join('bangunan_biliks', 'bangunan_biliks.id', '=', 'tempahan_biliks.bangunan_biliks_id')->where('bangunan_biliks.users_id', Auth::user()->id);
+            $model->select('*', 'tempahan_biliks.id as temp_id')->join('bangunan_biliks', 'bangunan_biliks.id', '=', 'tempahan_biliks.bangunan_biliks_id')->where('bangunan_biliks.users_id', Auth::user()->id);
         }
         $model->get();
 
-//        echo Auth::user()->id;
-//        die();
+
 
         return DataTables::of($model)
             ->setRowAttr([
                 'data-tempahan-id' => function($data) {
-                    return $data->id;
+//                    echo '<pre>';
+//                    print_r($data);
+//                    echo '</pre>';
+//                    die();
+                    return $data->temp_id;
                 },
             ])
             ->addColumn('nama', function($data){
@@ -108,6 +111,11 @@ class AdminTempahanBilikController extends Controller{
             'nota' => $model->nota
         ];
 
+//        echo '<pre>';
+//        print_r($data);
+//        echo '</pre>';
+//        die();
+
         return response()->json([
             'success' => 1,
             'data' => $data
@@ -122,11 +130,11 @@ class AdminTempahanBilikController extends Controller{
         $model->status = $status;
         $model->save();
 
-        if($status == 1){
-            dispatch(new SendEmailLulusTempahan($model->id));
-        }else{
-            dispatch(new SendEmailLulusTempahan($model->id));
-        }
+//        if($status == 1){
+//            dispatch(new SendEmailLulusTempahan($model->id));
+//        }else{
+//            dispatch(new SendEmailLulusTempahan($model->id));
+//        }
 
         return response()->json([
             'success' => 1,

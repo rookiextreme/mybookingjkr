@@ -4,8 +4,11 @@
     @role('Admin')
     <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Admin</span><i data-feather="more-horizontal"></i>
     </li>
-    <li class=" nav-item"><a class="d-flex align-items-center" href="{{ Request::root() }}/admin/pengguna"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Kanban">Pengurusan<br> Pengguna</span></a>
-    </li>
+
+    @if(in_array(Auth::user()->id, [1,2,3]))
+        <li class=" nav-item"><a class="d-flex align-items-center" href="{{ Request::root() }}/admin/pengguna"><i data-feather="users"></i><span class="menu-title text-truncate" data-i18n="Kanban">Pengurusan<br> Pengguna</span></a>
+        </li>
+    @endif
     <li class=" nav-item"><a class="d-flex align-items-center" href="{{ Request::root() }}/admin/tempahan/bilik"><i data-feather="book"></i><span class="menu-title text-truncate" data-i18n="Kanban">Pengurusan<br> Tempahan</span></a>
     </li>
     <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="calendar"></i><span class="menu-title text-truncate" data-i18n="Invoice">Tetapan Bilik</span></a>

@@ -1,6 +1,5 @@
 class DatatableUI{
     static init({selector, columnList, columnDef = [], url = '', buttons = [], label = false}){
-
         $(''+ selector +' thead tr').clone(true).appendTo(''+ selector +' thead');
         $(''+ selector +' thead tr:eq(1) th').each(function (i) {
             var title = $(this).text();
