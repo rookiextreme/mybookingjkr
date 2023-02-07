@@ -13,4 +13,12 @@ class Flatpickrinit{
             enableTime: true
         });
     }
+
+    static initWithTimeFuture(selector){
+        $(selector).flatpickr({
+            dateFormat: 'd-m-Y H:i',
+            enableTime: true,
+            minDate: "today"
+        });
+    }
 }

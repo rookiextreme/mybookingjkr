@@ -49,8 +49,8 @@ DatatableUI.init({
 
 Select2init.initAll();
 
-Flatpickrinit.initWithTime('#tempahan-bilik-masa-mula');
-Flatpickrinit.initWithTime('#tempahan-bilik-masa-tamat');
+Flatpickrinit.initWithTimeFuture('#tempahan-bilik-masa-mula');
+Flatpickrinit.initWithTimeFuture('#tempahan-bilik-masa-tamat');
 
 $(document).on('change', '#bilik-lokasi', function(){
     let self = $(this);

@@ -25,7 +25,7 @@ $(document).on('click', '.pengguna-peranan', function(){
                 data: v,
                 func: function(data){
                     $('.check-peranan').each(function(){
-                        $(this).prop('check', false);
+                        $(this).prop('checked', false);
                     });
                     let roles = data.data.roles;
 

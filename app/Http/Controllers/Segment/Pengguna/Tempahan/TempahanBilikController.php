@@ -40,7 +40,16 @@ class TempahanBilikController extends Controller{
             ->addColumn('tempoh', function($data){
                 return 'Dari: '.date('d-m-Y H:i', strtotime($data->masa_mula)).' <br> Hingga: '.date('d-m-Y H:i', strtotime($data->masa_tamat));
             })->addColumn('status', function($data){
-                return $data->status == 0 ? '<b style="color:blue">Belum Lulus</b>' : '<b style="color:green">Telah Lulus</b>';
+                $label = '';
+                if($data->status == 0){
+                    $label = '<span style="color:blue">Belum Lulus</span>';
+                }else if($data->status == 1){
+                    $label = '<span style="color:green">Lulus</span>';
+                }
+                else if($data->status == 2){
+                    $label = '<span style="color:red">Tidak Lulus</span>';
+                }
+                return $label;
             })
             ->addColumn('action', function($data){
             })

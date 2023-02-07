@@ -141,7 +141,7 @@
                                             '<div class="card mb-4">' +
                                                 '<div class="card-body">' +
                                                     '<h4 class="card-title">'+ v.bilik +'</h4>' +
-                                                    '<div class="card-subtitle text-muted mb-1">Urussetia - '+ v.urusetia +' <br>Pengerusi - Meor</div>' +
+                                                    '<div class="card-subtitle text-muted mb-1">Urussetia - '+ v.urusetia +' <br>Pengerusi - '+ v.pengerusi +'</div>' +
                                                 '</div>' +
                                             '</div>' +
                                         '</div>';

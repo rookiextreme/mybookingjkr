@@ -68,7 +68,7 @@ class TempahanBilik extends Model
             $model->nota = $request->input('tempahan_bilik_nota');
             $model->status = 0;
 
-            dispatch(SendEmailTempahan::class($model->id));
+//            dispatch(SendEmailTempahan::class($model->id));
             if($model->save()){
                 return response()->json([
                     'success' => 1
