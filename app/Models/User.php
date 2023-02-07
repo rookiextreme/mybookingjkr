@@ -65,6 +65,10 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\LaratrustModels\RoleUser', 'user_id', 'id');
     }
 
+    public function users_roles_all(){
+        return $this->hasMany('App\Models\LaratrustModels\RoleUser', 'user_id', 'id');
+    }
+
     public static function createOrUpdate($peg_maklumat){
         $user = User::where('nokp', $peg_maklumat['nokp'])->first();
         if(!$user) {

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->integer('biliks_id');
             $table->integer('fasilitis_id');
+            $table->integer('kuantiti');
             $table->integer('flag');
             $table->integer('delete_id');
             $table->timestamps();

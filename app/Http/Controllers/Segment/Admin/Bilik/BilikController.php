@@ -9,6 +9,7 @@ use App\Models\Tetapan\BilikFasiliti;
 use App\Models\Tetapan\Fasiliti;
 use App\Models\Tetapan\Lokasi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 
 class BilikController extends Controller{
@@ -28,6 +29,10 @@ class BilikController extends Controller{
 
     public function getBilikList(){
         $model = BangunanBilik::where('delete_id', 0);
+
+        if(Auth::user()->id != 1){
+            $model->where('users_id', Auth::user()->id);
+        }
 
         return DataTables::of($model)
             ->setRowAttr([

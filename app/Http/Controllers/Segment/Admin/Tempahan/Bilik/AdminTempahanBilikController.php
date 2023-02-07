@@ -3,11 +3,14 @@ namespace App\Http\Controllers\Segment\Admin\Tempahan\Bilik;
 
 use App\Http\Controllers\Common\CommonController;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendEmailLulusTempahan;
+use App\Jobs\SendEmailTempahan;
 use App\Models\Mykj\ListPegawai2;
 use App\Models\Tempahan\TempahanBilik;
 use App\Models\Tetapan\BangunanBilik;
 use App\Models\Tetapan\Fasiliti;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 
 class AdminTempahanBilikController extends Controller{
@@ -21,7 +24,15 @@ class AdminTempahanBilikController extends Controller{
     }
 
     public function getTempahanBilikList(){
-        $model = TempahanBilik::where('delete_id', 0);
+        $model = TempahanBilik::where('tempahan_biliks.delete_id', 0);
+
+        if(Auth::user()->id != 1){
+            $model->join('bangunan_biliks', 'bangunan_biliks.id', '=', 'tempahan_biliks.bangunan_biliks_id')->where('bangunan_biliks.users_id', Auth::user()->id);
+        }
+        $model->get();
+
+//        echo Auth::user()->id;
+//        die();
 
         return DataTables::of($model)
             ->setRowAttr([
@@ -34,7 +45,7 @@ class AdminTempahanBilikController extends Controller{
             })
             ->addColumn('maklumat', function($data){
                 $getUrusetia = ListPegawai2::getMaklumatPegawai($data->nokp_urusetia);
-                return 'Tujuan: '.$data->nama.'<br> Urusetia: '.$getUrusetia['name'].'<br> Pengerusi: '.$data->pengerusi;
+                return 'Tujuan: '.$data->nama.'<br> Urusetia: '.$getUrusetia['name'].'<br> Pengerusi: '.$data->pengerusi.'<br>Telefon: '.$data->tel_urusetia;
             })
             ->addColumn('tempoh', function($data){
                 return 'Dari: '.date('d-m-Y H:i', strtotime($data->masa_mula)).' <br> Hingga: '.date('d-m-Y H:i', strtotime($data->masa_tamat));
@@ -110,6 +121,12 @@ class AdminTempahanBilikController extends Controller{
         $model = CommonController::getModel(TempahanBilik::class, 1, $id);
         $model->status = $status;
         $model->save();
+
+        if($status == 1){
+            dispatch(new SendEmailLulusTempahan($model->id));
+        }else{
+            dispatch(new SendEmailLulusTempahan($model->id));
+        }
 
         return response()->json([
             'success' => 1,

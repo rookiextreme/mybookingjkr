@@ -7,6 +7,7 @@ use App\Http\Controllers\Validation\ValidationController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BangunanBilik extends Model
 {
@@ -43,6 +44,7 @@ class BangunanBilik extends Model
 
             $model = CommonController::getModel(BangunanBilik::class, $trigger, $bilik_id);
 
+            $model->users_id = Auth::user()->id;
             $model->bangunans_id = $v->bilik_bangunan;
             $model->nama = $v->bilik_name;
             $model->aras = $v->bilik_aras;
