@@ -43,7 +43,7 @@
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
                             <label class="form-label" for="basicInput">Perkara</label>
-                            <input type="text" class="form-control" id="tempahan-bilik-name" value=""/>
+                            <input type="text" class="form-control" id="tempahan-bilik-perkara" value=""/>
                             <div class="invalid-feedback"></div>
                         </div>
                     </div>

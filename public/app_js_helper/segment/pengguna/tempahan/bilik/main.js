@@ -60,7 +60,7 @@ $(document).on('click', '#tempahan-bilik-add, #tempahan-bilik-edit', function(){
    let trigger = '';
 
     let v = validate.checkEmpty(
-        validate.getValue('#tempahan-bilik-name', 'mix', 'Nama Tempahan', 'tempahan_bilik_name'),
+        validate.getValue('#tempahan-bilik-perkara', 'mix', 'Perkara', 'tempahan_bilik_perkara'),
         validate.getValue('#tempahan-bilik-urusetia', 'mix', 'Urusetia', 'tempahan_bilik_urusetia'),
         validate.getValue('#tempahan-bilik-notel-urusetia', 'int', 'No. Telefon Urusetia', 'tempahan_bilik_notel_urusetia'),
         validate.getValue('#tempahan-bilik-pengerusi', 'mix', 'Pengerusi', 'tempahan_bilik_pengerusi'),
