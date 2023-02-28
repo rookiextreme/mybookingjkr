@@ -52,7 +52,7 @@ class TempahanBilikController extends Ajax{
                     $('.tempahan-info').attr('style', 'display:compact');
                     $('#tempahan-bilik-add').attr('style', '');
                 }else{
-                    ToastAlert.toasting('Whoops!', 'Tiada Slot', 'error');
+                    ToastAlert.toasting('Whoops!', 'Slot Ini Sudah Diambil', 'error');
                     $('.tempahan-info').attr('style', 'display:none');
                     $('#tempahan-bilik-add').attr('style', 'display:none');
                 }

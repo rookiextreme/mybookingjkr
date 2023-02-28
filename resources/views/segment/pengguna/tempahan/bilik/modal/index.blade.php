@@ -7,14 +7,14 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-xl-4 col-md-6 col-12">
+                    <div class="col-xl-6 col-md-6 col-12">
                         <div class="mb-1 form-group">
                             <label class="form-label" for="basicInput">Masa Mula</label>
                             <input type="text" class="form-control" id="tempahan-bilik-masa-mula" value=""/>
                             <div class="invalid-feedback"></div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6 col-12">
+                    <div class="col-xl-6 col-md-6 col-12">
                         <div class="mb-1 form-group">
                             <label class="form-label" for="basicInput">Masa Tamat</label>
 
@@ -22,13 +22,13 @@
                             <div class="invalid-feedback"></div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6 col-12">
+                    <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
                             <label class="form-label" for="basicInput">Bilik</label>
                             <select class="select2 form-select form-control" id="tempahan-bilik-bilik">
                                 <option value="">Sila Pilih</option>
                                 @foreach($bangunanBilik as $bb)
-                                    <option value="{{ $bb->id }}">{{ $bb->bilikBangunan->nama.', Tingkat '.$bb->aras.', '.$bb->nama.', '.$bb->kapasiti.' orang' }}</option>
+                                    <option value="{{ $bb->id }}">{{ $bb->bilikBangunan->nama.', Tingkat '.$bb->aras.', '.$bb->nama.', '.$bb->kapasiti.' orang - '.$bb->bilikPenyelia->name }}</option>
                                 @endforeach
                             </select>
                             <div class="invalid-feedback"></div>
@@ -42,7 +42,7 @@
                 <div class="row tempahan-info" style="display: none">
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
-                            <label class="form-label" for="basicInput">Name</label>
+                            <label class="form-label" for="basicInput">Perkara</label>
                             <input type="text" class="form-control" id="tempahan-bilik-name" value=""/>
                             <div class="invalid-feedback"></div>
                         </div>
