@@ -4,6 +4,7 @@ namespace App\Models\Tetapan;
 
 use App\Http\Controllers\Common\CommonController;
 use App\Http\Controllers\Validation\ValidationController;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -15,6 +16,10 @@ class BangunanBilik extends Model
 
     public function bilikBangunan(){
         return $this->hasOne(Bangunan::class, 'id', 'bangunans_id');
+    }
+
+    public function bilikPenyelia(){
+        return $this->hasOne(User::class, 'id', 'users_id');
     }
 
     public function bilikFasiliti(){

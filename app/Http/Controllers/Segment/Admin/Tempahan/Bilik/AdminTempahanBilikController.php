@@ -29,7 +29,7 @@ class AdminTempahanBilikController extends Controller{
         if(Auth::user()->id != 1){
             $model->select('*', 'tempahan_biliks.id as temp_id')->join('bangunan_biliks', 'bangunan_biliks.id', '=', 'tempahan_biliks.bangunan_biliks_id')->where('bangunan_biliks.users_id', Auth::user()->id);
         }
-        $model->get();
+        $model->orderBy('tempahan_biliks.created_at', 'desc')->get();
 
 
 
