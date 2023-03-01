@@ -48,7 +48,7 @@ class AdminTempahanBilikController extends Controller{
             })
             ->addColumn('maklumat', function($data){
                 $getUrusetia = ListPegawai2::getMaklumatPegawai($data->nokp_urusetia);
-                return 'Tujuan: '.$data->nama.'<br> Urusetia: '.$getUrusetia['name'].'<br> Pengerusi: '.$data->pengerusi.'<br>Telefon: '.$data->tel_urusetia;
+                return 'Tujuan: '.$data->nama.'<br> Urusetia: '.$getUrusetia['name'].'<br> Pengerusi: '.$data->pengerusi.'<br>Telefon: '.$data->tel_urusetia.'<br>Waktu Tempahan: '.date('d-m-Y H:i', strtotime($data->created_at)) ;
             })
             ->addColumn('tempoh', function($data){
                 return 'Dari: '.date('d-m-Y H:i', strtotime($data->masa_mula)).' <br> Hingga: '.date('d-m-Y H:i', strtotime($data->masa_tamat));
@@ -92,8 +92,18 @@ class AdminTempahanBilikController extends Controller{
         $id = $request->input('id');
         $model = TempahanBilik::find($id);
 
+        $status = '';
+        if ($model->status==0){
+            $status = 'Belum Lulus';
+        } elseif ($model->status==1){
+            $status = 'Lulus';
+        } else{
+            $status = 'Tidak Lulus';
+        }
         $data = [];
         $data['tempahan'] = [
+            'status_tempahan' => $status,
+            'no_ruj' => $id,
             'tempahan' => date('d-m-Y H:i', strtotime($model->created_at)),
             'masa_mula' => date('d-m-Y H:i', strtotime($model->masa_mula)),
             'masa_tamat' => date('d-m-Y H:i', strtotime($model->masa_tamat)),

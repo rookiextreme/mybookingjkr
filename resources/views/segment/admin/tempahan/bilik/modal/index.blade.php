@@ -9,7 +9,17 @@
                 <div class="row">
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
-                            <label class="form-label" for="basicInput"><b>Ditempah Pada:</b> <span id="tempah-pada"></span></label>
+                            <label class="form-label" for="basicInput"><b>Status:</b>&nbsp<span id="status_tempahan"></span></label>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-md-6 col-12">
+                        <div class="mb-1 form-group">
+                            <label class="form-label" for="basicInput"><b>No.Rujukan:</b>&nbsp<span id="no_ruj"></span></label>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-md-6 col-12">
+                        <div class="mb-1 form-group">
+                            <label class="form-label" for="basicInput"><b>Ditempah Pada:</b> &nbsp<span id="tempah-pada"></span></label>
                         </div>
                     </div>
                     <div class="col-xl-12 col-md-6 col-12">
@@ -27,23 +37,24 @@
                             <label class="form-label" for="basicInput"><b>Bilik:</b> <span id="tempah-nama-bilik"></span></label>
                         </div>
                     </div>
-                    <div class="col-xl-12 col-md-6 col-12">
+                    {{-- <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
                             <label class="form-label" for="basicInput"><b>Fasiliti/Kemudahan:</b><br> <span id="tempah-bilik-fasiliti"></span></label>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <hr>
 
                 <div class="row">
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
-                            <label class="form-label" for="basicInput"><b>Mesyuarat:</b> <span id="tempah-tujuan"></span></label>
+                            <label class="form-label" for="basicInput"><b>Perkara:</b> <span id="tempah-tujuan"></span></label>
                         </div>
                     </div>
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
                             <label class="form-label" for="basicInput"><b>Urusetia:</b> <span id="tempah-urusetia"></span></label>
+                            <label class="form-label" for="basicInput"><b>[<span id=""></span>]</b> </label>
                         </div>
                     </div>
                     <div class="col-xl-12 col-md-6 col-12">
@@ -53,12 +64,17 @@
                     </div>
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
-                            <label class="form-label" for="basicInput"><b>Agensi Dalam:</b> <span id="tempah-agensi-d"></span></label>
+                            <label class="form-label" for="basicInput"><b>Bil.Pegawai Agensi:</b> <span id="tempah-agensi-d"></span></label>
                         </div>
                     </div>
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
-                            <label class="form-label" for="basicInput"><b>Agensi Luar:</b> <span id="tempah-agensi-l"></span></label>
+                            <label class="form-label" for="basicInput"><b>Bil.Pegawai Luar:</b> <span id="tempah-agensi-l"></span></label>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-md-6 col-12">
+                        <div class="mb-1 form-group">
+                            <label class="form-label" for="basicInput"><b>Penerangan:</b> <span id="nota"></span></label>
                         </div>
                     </div>
                 </div>
