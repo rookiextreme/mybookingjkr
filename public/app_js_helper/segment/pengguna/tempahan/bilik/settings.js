@@ -4,7 +4,7 @@ DatatableUI.init({
         { data: 'bilik' },
         { data: 'maklumat' },
         { data: 'tempoh' },
-        { data: 'status' },
+        { data: 'status_label' },
         { data: 'action' },
     ],
     url: '/pengguna/tempahan/bilik/get-list',
@@ -28,16 +28,18 @@ DatatableUI.init({
             orderable: false,
             render: function (data, type, full, meta) {
                 let status = full.status;
-
-                if(status === 0){
+                if(status == 1 || status == 2){
                     return (
                         '<div class="btn-group" role="group" aria-label="Basic example">' +
-                        '<button type="button" class="btn btn-outline-danger tempahan-bilik-delete" data-bs-toggle="tooltip" data-bs-placement="top" title="Padam">' + feather.icons['trash-2'].toSvg() +'</button>' +
+                            '<button type="button" class="btn btn-outline-primary tempahan-edit" data-bs-toggle="tooltip" data-bs-placement="top" title="Lihat Tempahan">' + feather.icons['edit-3'].toSvg() +'</button>'  +
                         '</div>'
                     );
                 }else{
                     return (
-                        '-'
+                        '<div class="btn-group" role="group" aria-label="Basic example">' +
+                            '<button type="button" class="btn btn-outline-warning tempahan-bilik-edit" data-bs-toggle="tooltip" data-bs-placement="top" title="Kemaskini Tempahan">' + feather.icons['edit-3'].toSvg() +'</button>' +
+                            '<button type="button" class="btn btn-outline-danger tempahan-bilik-delete" data-bs-toggle="tooltip" data-bs-placement="top" title="Padam">' + feather.icons['trash-2'].toSvg() +'</button>' +
+                        '</div>'
                     );
                 }
 

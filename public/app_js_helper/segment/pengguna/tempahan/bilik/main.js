@@ -43,11 +43,17 @@ $(document).on('click', '.tempahan-bilik-edit', function(){
                 data: v,
                 func: function(data){
                     console.log(data);
-                    // $('#bilik-name').val(data.data.nama);
-                    // $('#bilik-lokasi').val(data.data.lokasi_id).trigger('change');
-                    // $('#bilik-aras').val(data.data.aras);
-                    // $('#bilik-kapasiti').val(data.data.kapasiti);
-                    // $('#bilik-bangunan').val(data.data.bangunan_id).prop('selected', true).trigger('change');
+                    $('.tempahan-info').attr('style', '');
+                    $('#tempahan-bilik-perkara').val(data.data.nama);
+                    $('#tempahan-bilik-urusetia').val(data.data.lokasi_id);
+                    $('#tempahan-bilik-notel-urusetia').val(data.data.aras);
+                    $('#tempahan-bilik-pengerusi').val(data.data.kapasiti);
+                    $('#tempahan-bilik-agensi').val(data.data.bangunan_id);
+                    $('#tempahan-bilik-agensi-l').val(data.data.lokasi_id);
+                    $('#tempahan_masa_mula').val(data.data.aras);
+                    $('#tempahan_masa_tamat').val(data.data.kapasiti);
+                    $('#tempahan_nota').val(data.data.bangunan_id);
+                    $('#tempahan_bilik_bilik').val(data.data.bangunan_id);
                 }
             });
         }
@@ -97,5 +103,50 @@ $(document).on('click', '.tempahan-bilik-delete', function (){
     TempahanBilikController.deleteTempahanBilik({
         url: 'pengguna/tempahan/bilik/delete',
         data: data,
+    });
+});
+
+
+$(document).on('click', '.tempahan-edit', function(){
+    let id = $(this).closest('tr').attr('data-tempahan-id');
+    $('#tempahan-id').val(id);
+    ModalUI.modal({
+        selector: '#tempahan-modal',
+        mode: 'show',
+        color: 'modal-warning',
+        label: 'Tempahan Bilik',
+        callback: function(){
+            let v = Common.emptyRequest();
+            v.append('id', id);
+            Ajax.runAjax({
+                url: 'pengguna/tempahan/bilik/get-tempahan-bilik',
+                data: v,
+                func: function(data){
+                    $('#status_tempahan').html(data.data.tempahan.status_tempahan);
+                    $('#no_ruj').html(data.data.tempahan.no_ruj);
+                    $('#tempah-pada').html(data.data.tempahan.tempahan);
+                    $('#tempah-masa-mula').html(data.data.tempahan.masa_mula);
+                    $('#tempah-masa-tamat').html(data.data.tempahan.masa_tamat);
+                    $('#tempah-nama-bilik').html(data.data.tempahan.bilik);
+
+                    $('#tempah-tujuan').html(data.data.maklumat.nama);
+                    $('#tempah-urusetia').html(data.data.maklumat.urusetia);
+                    $('#tempah-pengerusi').html(data.data.maklumat.pengerusi);
+                    $('#tempah-agensi-d').html(data.data.maklumat.bil_agensi_d);
+                    $('#tempah-agensi-l').html(data.data.maklumat.bil_agensi_l);
+                    $('#nota').html(data.data.maklumat.nota);
+
+                    let fasiliti = data.data.tempahan.fasiliti;
+                    let curString = '';
+                    if(fasiliti.length > 0){
+                        fasiliti.forEach(function(v){
+                            curString += v.nama + ' - Kuantiti: ' + v.kuantiti + '<br>';
+                        });
+                    }
+
+                    $('#tempah-bilik-fasiliti').html(curString);
+                }
+            });
+        }
     });
 });

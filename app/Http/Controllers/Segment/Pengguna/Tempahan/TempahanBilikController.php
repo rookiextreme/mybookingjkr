@@ -39,7 +39,7 @@ class TempahanBilikController extends Controller{
             })
             ->addColumn('tempoh', function($data){
                 return 'Dari: '.date('d-m-Y H:i', strtotime($data->masa_mula)).' <br> Hingga: '.date('d-m-Y H:i', strtotime($data->masa_tamat));
-            })->addColumn('status', function($data){
+            })->addColumn('status_label', function($data){
                 $label = '';
                 if($data->status == 0){
                     $label = '<span style="color:blue">Belum Lulus</span>';
@@ -53,7 +53,7 @@ class TempahanBilikController extends Controller{
             })
             ->addColumn('action', function($data){
             })
-            ->rawColumns(['action', 'tempoh', 'status'])
+            ->rawColumns(['action', 'tempoh', 'status_label'])
             ->make(true);
     }
 
@@ -63,11 +63,11 @@ class TempahanBilikController extends Controller{
 
     public function getTempahanBilik(Request $request){
         $id = $request->input('id');
-        $model = BangunanBilik::find($id);
+        $model = TempahanBilik::find($id);
 
         $data = [];
         $data['nama'] = $model->nama;
-        $data['lokasi_id'] = $model->bilikBangunan->lokasis_id;
+        $data['lokasi_id'] = $model->tempahanBilik->bilikBangunan->lokasis_id;
         $data['bangunan_id'] = $model->bangunans_id;
         $data['aras'] = $model->aras;
         $data['kapasiti'] = $model->kapasiti;
