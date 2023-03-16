@@ -94,6 +94,7 @@ Route::prefix('/pengguna')->group(function () {
             Route::post('/get-tempahan-bilik', [TempahanBilikController::class, 'getTempahanBilik']);
             Route::post('/delete', [TempahanBilikController::class, 'deleteTempahanBilik']);
             Route::post('/tengok-kosong', [TempahanBilikController::class, 'tengokKosongTempahanBilik']);
+            Route::post('/get-view-tempahan-bilik', [TempahanBilikController::class, 'getViewTempahanBilik']);
         });
     });
 });

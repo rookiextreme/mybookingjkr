@@ -31,7 +31,7 @@ DatatableUI.init({
                 if(status == 1 || status == 2){
                     return (
                         '<div class="btn-group" role="group" aria-label="Basic example">' +
-                            '<button type="button" class="btn btn-outline-primary tempahan-edit" data-bs-toggle="tooltip" data-bs-placement="top" title="Lihat Tempahan">' + feather.icons['edit-3'].toSvg() +'</button>'  +
+                            '<button type="button" class="btn btn-outline-primary tempahan-view" data-bs-toggle="tooltip" data-bs-placement="top" title="Lihat Tempahan">' + feather.icons['edit-3'].toSvg() +'</button>'  +
                         '</div>'
                     );
                 }else{

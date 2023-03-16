@@ -9,6 +9,7 @@ use App\Models\Tetapan\Lokasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
+use App\Models\Mykj\ListPegawai2;
 
 class TempahanBilikController extends Controller{
     public function __construct()
@@ -104,5 +105,60 @@ class TempahanBilikController extends Controller{
             'success' => 1,
             'data' => $avail
         ]);
+    }
+
+    public function getViewTempahanBilik(Request $request){
+        $id = $request->input('id');
+        $model = TempahanBilik::find($id);
+
+        $status = '';
+        if ($model->status==0){
+            $status = 'Belum Lulus';
+        } elseif ($model->status==1){
+            $status = 'Lulus';
+        } else{
+            $status = 'Tidak Lulus';
+        }
+
+        $data = [];
+        $data['tempahan'] = [
+            'status_tempahan' => $status,
+            'no_ruj' => $id,
+            'tempahan' => date('d-m-Y H:i', strtotime($model->created_at)),
+            'masa_mula' => date('d-m-Y H:i', strtotime($model->masa_mula)),
+            'masa_tamat' => date('d-m-Y H:i', strtotime($model->masa_tamat)),
+            'bilik' => $model->tempahanBilik->nama,
+            'fasiliti' => self::getFasilitiBilik($model->tempahanBilik)
+        ];
+        $getUrusetia = ListPegawai2::getMaklumatPegawai($model->nokp_urusetia);
+        $data['maklumat'] = [
+            'nama' => $model->nama,
+            'urusetia' => $getUrusetia['name'],
+            'pengerusi' => $model->pengerusi,
+            'bil_agensi_d' => $model->bil_agensi_d,
+            'bil_agensi_l' => $model->bil_agensi_l,
+            'nota' => $model->nota
+        ];
+        return response()->json([
+            'success' => 1,
+            'data' => $data
+        ]);
+    }
+
+    public function getFasilitiBilik(BangunanBilik $bilik){
+        $data = [];
+
+        $getFasiliti = $bilik->bilikFasiliti;
+
+        if(count($getFasiliti) > 0){
+            foreach($getFasiliti as $gF){
+                $data[] = [
+                    'nama' => $gF->BFFasiliti->nama,
+                    'kuantiti' => $gF->kuantiti
+                ];
+            }
+        }
+        return $data;
+
     }
 }

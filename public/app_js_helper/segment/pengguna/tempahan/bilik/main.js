@@ -107,19 +107,19 @@ $(document).on('click', '.tempahan-bilik-delete', function (){
 });
 
 
-$(document).on('click', '.tempahan-edit', function(){
+$(document).on('click', '.tempahan-view', function(){
     let id = $(this).closest('tr').attr('data-tempahan-id');
     $('#tempahan-id').val(id);
     ModalUI.modal({
         selector: '#tempahan-modal',
         mode: 'show',
         color: 'modal-warning',
-        label: 'Tempahan Bilik',
+        label: 'Lihat Tempahan Bilik',
         callback: function(){
             let v = Common.emptyRequest();
             v.append('id', id);
             Ajax.runAjax({
-                url: 'pengguna/tempahan/bilik/get-tempahan-bilik',
+                url: 'pengguna/tempahan/bilik/get-view-tempahan-bilik',
                 data: v,
                 func: function(data){
                     $('#status_tempahan').html(data.data.tempahan.status_tempahan);
@@ -150,3 +150,18 @@ $(document).on('click', '.tempahan-edit', function(){
         }
     });
 });
+
+$(document).on('click', '#tempahan-view', function(){
+    let curThis = $(this);
+    let trigger = '';
+
+    let data = Common.emptyRequest();
+    data.append('status', curThis.attr('data-status'));
+    data.append('id', $('#tempahan-id').val());
+
+    //  FasilitiController.lulusTempahan({
+    //      url: 'admin/tempahan/bilik/lulus',
+    //      data: data,
+    //      trigger: trigger
+    //  });
+ });
