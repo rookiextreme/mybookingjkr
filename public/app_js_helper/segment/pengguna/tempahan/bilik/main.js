@@ -116,6 +116,7 @@ $(document).on('click', '.tempahan-view', function(){
         color: 'modal-warning',
         label: 'Lihat Tempahan Bilik',
         callback: function(){
+            console.log(data);
             let v = Common.emptyRequest();
             v.append('id', id);
             Ajax.runAjax({
@@ -159,9 +160,9 @@ $(document).on('click', '#tempahan-view', function(){
     data.append('status', curThis.attr('data-status'));
     data.append('id', $('#tempahan-id').val());
 
-    //  FasilitiController.lulusTempahan({
-    //      url: 'admin/tempahan/bilik/lulus',
-    //      data: data,
-    //      trigger: trigger
-    //  });
+     FasilitiController.lulusTempahan({
+         url: 'admin/tempahan/bilik/lulus',
+         data: data,
+         trigger: trigger
+     });
  });

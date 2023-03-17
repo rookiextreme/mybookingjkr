@@ -3,13 +3,14 @@ namespace App\Http\Controllers\Segment\Pengguna\Tempahan;
 
 use App\Http\Controllers\Common\CommonController;
 use App\Http\Controllers\Controller;
+use App\Models\Mykj\ListPegawai2;
 use App\Models\Tempahan\TempahanBilik;
 use App\Models\Tetapan\BangunanBilik;
 use App\Models\Tetapan\Lokasi;
+use App\Models\Tetapan\Fasiliti;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
-use App\Models\Mykj\ListPegawai2;
 
 class TempahanBilikController extends Controller{
     public function __construct()
@@ -107,7 +108,7 @@ class TempahanBilikController extends Controller{
         ]);
     }
 
-    public function getViewTempahanBilik(Request $request){
+    public function getTempahanBilik2(Request $request){
         $id = $request->input('id');
         $model = TempahanBilik::find($id);
 
@@ -121,7 +122,7 @@ class TempahanBilikController extends Controller{
         }
 
         $data = [];
-        $data['tempahan'] = [
+        $data['TempahanBilik'] = [
             'status_tempahan' => $status,
             'no_ruj' => $id,
             'tempahan' => date('d-m-Y H:i', strtotime($model->created_at)),
@@ -134,6 +135,7 @@ class TempahanBilikController extends Controller{
         $data['maklumat'] = [
             'nama' => $model->nama,
             'urusetia' => $getUrusetia['name'],
+            'tel_urusetia' => $model->tel_urusetia,
             'pengerusi' => $model->pengerusi,
             'bil_agensi_d' => $model->bil_agensi_d,
             'bil_agensi_l' => $model->bil_agensi_l,
@@ -160,5 +162,18 @@ class TempahanBilikController extends Controller{
         }
         return $data;
 
+    }
+    public function lulusTempahanBilik(Request $request){
+        $status = $request->input('status');
+        $id = $request->input('id');
+
+        $model = CommonController::getModel(TempahanBilik::class, 1, $id);
+        $model->status = $status;
+        $model->save();
+
+        return response()->json([
+            'success' => 1,
+            'data' => $status
+        ]);
     }
 }

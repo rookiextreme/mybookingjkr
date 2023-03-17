@@ -54,7 +54,7 @@
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
                             <label class="form-label" for="basicInput"><b>Urusetia:</b> <span id="tempah-urusetia"></span></label>
-                            <label class="form-label" for="basicInput"><b>[<span id=""></span>]</b> </label>
+                            <label class="form-label" for="basicInput"><b>[<span id="tel-urusetia"></span>]</b> </label>
                         </div>
                     </div>
                     <div class="col-xl-12 col-md-6 col-12">

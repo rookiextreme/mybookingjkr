@@ -37,11 +37,6 @@
                             <label class="form-label" for="basicInput"><b>Bilik:</b> <span id="tempah-nama-bilik"></span></label>
                         </div>
                     </div>
-                    {{-- <div class="col-xl-12 col-md-6 col-12">
-                        <div class="mb-1 form-group">
-                            <label class="form-label" for="basicInput"><b>Fasiliti/Kemudahan:</b><br> <span id="tempah-bilik-fasiliti"></span></label>
-                        </div>
-                    </div> --}}
                 </div>
                 <hr>
 
@@ -54,7 +49,7 @@
                     <div class="col-xl-12 col-md-6 col-12">
                         <div class="mb-1 form-group">
                             <label class="form-label" for="basicInput"><b>Urusetia:</b> <span id="tempah-urusetia"></span></label>
-                            <label class="form-label" for="basicInput"><b>[<span id=""></span>]</b> </label>
+                            <label class="form-label" for="basicInput"><b>[<span id="tel-urusetia"></span>]</b> </label>
                         </div>
                     </div>
                     <div class="col-xl-12 col-md-6 col-12">
@@ -79,10 +74,6 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="tempahan-edit" data-status="1">Lulus</button>
-                <button type="button" class="btn btn-danger" id="tempahan-edit" data-status="2">Tidak Lulus</button>
-            </div> --}}
         </div>
     </div>
 </div>

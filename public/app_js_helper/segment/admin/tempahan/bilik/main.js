@@ -22,6 +22,7 @@ $(document).on('click', '.tempahan-edit', function(){
 
                     $('#tempah-tujuan').html(data.data.maklumat.nama);
                     $('#tempah-urusetia').html(data.data.maklumat.urusetia);
+                    $('#tel-urusetia').html(data.data.maklumat.tel_urusetia);
                     $('#tempah-pengerusi').html(data.data.maklumat.pengerusi);
                     $('#tempah-agensi-d').html(data.data.maklumat.bil_agensi_d);
                     $('#tempah-agensi-l').html(data.data.maklumat.bil_agensi_l);

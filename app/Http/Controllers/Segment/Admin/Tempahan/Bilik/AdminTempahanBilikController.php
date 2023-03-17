@@ -115,6 +115,7 @@ class AdminTempahanBilikController extends Controller{
         $data['maklumat'] = [
             'nama' => $model->nama,
             'urusetia' => $getUrusetia['name'],
+            'tel_urusetia' => $model->tel_urusetia,
             'pengerusi' => $model->pengerusi,
             'bil_agensi_d' => $model->bil_agensi_d,
             'bil_agensi_l' => $model->bil_agensi_l,
