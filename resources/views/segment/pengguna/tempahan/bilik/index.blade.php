@@ -56,7 +56,7 @@
     </div>
 </div>
 @include('segment.pengguna.tempahan.bilik.modal.index')
-@include('segment.pengguna.tempahan.bilik.view-tempahan.modal.index')
+@include('segment.pengguna.tempahan.bilik.view-tempahan.index')
 @endsection
 
 @section('JS')
