@@ -44,9 +44,9 @@ $(document).on('click', '.tempahan-bilik-edit', function(){
                 func: function(data){
                     console.log(data);
                     $('.tempahan-info').attr('style', '');
-                    $('#tempahan-bilik-name').val(data.data.nama);
-                    $('#tempahan-bilik-urusetia').val(data.data.lokasi_id);
-                    $('#tempahan-bilik-notel-urusetia').val(data.data.aras);
+                    $('#tempahan-bilik-name').val(data.data.tempahan.nama);
+                    $('#tempahan-bilik-urusetia').val(data.data.tempahan.urusetia);
+                    $('#tempahan-bilik-notel-urusetia').val(data.data.tempahan.tel_urusetia);
                     $('#tempahan-bilik-pengerusi').val(data.data.kapasiti);
                     $('#tempahan-bilik-agensi').val(data.data.bangunan_id);
                     $('#tempahan-bilik-agensi-l').val(data.data.lokasi_id);
