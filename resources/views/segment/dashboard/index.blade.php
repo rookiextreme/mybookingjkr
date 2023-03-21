@@ -31,7 +31,7 @@
     </div>
     <!-- Calendar Add/Update/Delete event modal-->
     <div class="modal modal-slide-in event-sidebar fade" id="add-new-sidebar">
-        <div class="modal-dialog sidebar-lg">
+        {{-- <div class="modal-dialog sidebar-lg">
             <div class="modal-content p-0">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">×</button>
                 <div class="modal-header mb-1">
@@ -99,7 +99,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
     <!--/ Calendar Add/Update/Delete event modal-->
 </section>

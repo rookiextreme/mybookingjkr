@@ -44,7 +44,7 @@ $(document).on('click', '.tempahan-bilik-edit', function(){
                 func: function(data){
                     console.log(data);
                     $('.tempahan-info').attr('style', '');
-                    $('#tempahan-bilik-perkara').val(data.data.nama);
+                    $('#tempahan-bilik-name').val(data.data.nama);
                     $('#tempahan-bilik-urusetia').val(data.data.lokasi_id);
                     $('#tempahan-bilik-notel-urusetia').val(data.data.aras);
                     $('#tempahan-bilik-pengerusi').val(data.data.kapasiti);
@@ -66,7 +66,7 @@ $(document).on('click', '#tempahan-bilik-add, #tempahan-bilik-edit', function(){
    let trigger = '';
 
     let v = validate.checkEmpty(
-        validate.getValue('#tempahan-bilik-perkara', 'mix', 'Perkara', 'tempahan_bilik_perkara'),
+        validate.getValue('#tempahan-bilik-name', 'mix', 'Perkara', 'tempahan_bilik_name'),
         validate.getValue('#tempahan-bilik-urusetia', 'mix', 'Urusetia', 'tempahan_bilik_urusetia'),
         validate.getValue('#tempahan-bilik-notel-urusetia', 'int', 'No. Telefon Urusetia', 'tempahan_bilik_notel_urusetia'),
         validate.getValue('#tempahan-bilik-pengerusi', 'mix', 'Pengerusi', 'tempahan_bilik_pengerusi'),
