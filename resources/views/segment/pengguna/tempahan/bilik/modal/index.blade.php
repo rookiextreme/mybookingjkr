@@ -28,7 +28,7 @@
                             <select class="select2 form-select form-control" id="tempahan-bilik-bilik">
                                 <option value="">Sila Pilih</option>
                                 @foreach($bangunanBilik as $bb)
-                                    <option value="{{ $bb->id }}">{{ $bb->bilikBangunan->nama.', Tingkat '.$bb->aras.', '.$bb->nama.', '.$bb->kapasiti.' orang - '.$bb->bilikPenyelia->name }}</option>
+                                    <option value="{{ $bb->id }}">{{ $bb->bilikBangunan->nama.', Tingkat '.$bb->aras.', '.$bb->nama.', Kemudahan: '.$bb->fasiliti.', '.$bb->kapasiti.' orang - '.$bb->bilikPenyelia->name }}</option>
                                 @endforeach
                             </select>
                             <div class="invalid-feedback"></div>

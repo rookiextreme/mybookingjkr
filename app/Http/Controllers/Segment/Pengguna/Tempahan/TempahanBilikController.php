@@ -11,6 +11,7 @@ use App\Models\Tetapan\Fasiliti;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
+use App\Models\Tetapan\BilikFasiliti;
 
 class TempahanBilikController extends Controller{
     public function __construct()
@@ -66,6 +67,7 @@ class TempahanBilikController extends Controller{
     public function getTempahanBilik(Request $request){
         $id = $request->input('id');
         $model = TempahanBilik::find($id);
+        //$model = BangunanBilik::find($id);
 
         $data = [];
         $data['nama'] = $model->nama;
@@ -73,6 +75,8 @@ class TempahanBilikController extends Controller{
         $data['bangunan_id'] = $model->bangunans_id;
         $data['aras'] = $model->aras;
         $data['kapasiti'] = $model->kapasiti;
+
+        $data['fasiliti'] = self::getFasilitiBilik($model->tempahanBilik);
 
         return response()->json([
             'success' => 1,

@@ -37,6 +37,11 @@
                             <label class="form-label" for="basicInput"><b>Bilik:</b> <span id="tempah-nama-bilik"></span></label>
                         </div>
                     </div>
+                    <div class="col-xl-12 col-md-6 col-12">
+                        <div class="mb-1 form-group">
+                            <label class="form-label" for="basicInput"><b>Fasiliti/Kemudahan:</b><br> <span id="tempah-bilik-fasiliti"></span></label>
+                        </div>
+                    </div>
                 </div>
                 <hr>
 
