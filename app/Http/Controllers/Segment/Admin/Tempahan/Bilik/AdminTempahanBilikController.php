@@ -40,7 +40,7 @@ class AdminTempahanBilikController extends Controller{
 //                    print_r($data);
 //                    echo '</pre>';
 //                    die();
-                    return $data->temp_id;
+                    return $data->id;
                 },
             ])
             ->addColumn('nama', function($data){

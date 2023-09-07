@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 use App\Models\Tetapan\BilikFasiliti;
+use Illuminate\Support\Facades\DB;
 
 class TempahanBilikController extends Controller{
     public function __construct()
@@ -100,7 +101,9 @@ class TempahanBilikController extends Controller{
         $mula_date_reformat = date('Y-m-d H:i:s', strtotime($masa_mula));
         $tamat_time_reformat = date('Y-m-d H:i:s', strtotime($masa_tamat));
 
-        $checkTempahan = TempahanBilik::where('masa_mula', '>=', $mula_date_reformat)->where('masa_tamat', '<=', $tamat_time_reformat)->where('delete_id', 0)->where('bangunan_biliks_id', $tempahan_bilik_bilik)->first();
+        // $checkTempahan = TempahanBilik::where('masa_mula', '>=', DB::raw("date '".$mula_date_reformat.".000'"))->where('masa_tamat', '<=', DB::raw("date '".$tamat_time_reformat.".000'"))->where('delete_id', 0)->where('bangunan_biliks_id', $tempahan_bilik_bilik)->first();
+
+        $checkTempahan = TempahanBilik::whereRaw("(masa_mula,masa_tamat) OVERLAPS ('".$mula_date_reformat."','".$tamat_time_reformat."')")->where('delete_id', 0)->where('bangunan_biliks_id', $tempahan_bilik_bilik)->first();
 
         if($checkTempahan){
             $avail = 1;
@@ -108,7 +111,8 @@ class TempahanBilikController extends Controller{
 
         return response()->json([
             'success' => 1,
-            'data' => $avail
+            'data' => $avail,
+            'model' => $checkTempahan
         ]);
     }
 
